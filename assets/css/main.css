@@ -5,5 +5,8 @@ body{
 }
 @theme {
     --font-archivo: "Archivo", "sans-serif";
+    --color-green-0: #004423;
+    --color-green-1: #007163;
+    --shadow-2xl: 1px 3px 47px -4px rgba(0,0,0,0.54);
   }
   
