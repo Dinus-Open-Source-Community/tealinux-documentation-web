@@ -4,7 +4,7 @@ defineProps({});
 
 <template>
   <div
-    class="relative flex items-center p-4 mb-4 text-green-400 bg-gray-900 border-l-4 border-green-500 rounded shadow-sm"
+    class="relative flex items-center p-4 mb-4 text-green-400 bg-gray-900 border-l-4 border-green-500 rounded-md shadow-sm"
     role="alert"
   >
     <svg

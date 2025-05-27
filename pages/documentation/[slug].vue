@@ -1,6 +1,7 @@
 <script setup>
 const slug = useRoute().params.slug;
 const { data: post } = await useAsyncData(`docs-${slug}`, () => {
+  // console.info(`${fetch} /api/${slug}`);
   return $fetch(`/api/${slug}`);
 });
 </script>
@@ -13,15 +14,11 @@ const { data: post } = await useAsyncData(`docs-${slug}`, () => {
     <div
       class="md:col-span-8 col-span-12 pl-5 pr-3 before:content-[w-10 border-l-2 py-2 pl-3 border-[#858585] ]"
     >
-      <ContentRenderer
+      <!-- <ContentRenderer
         :value="post"
-        class="md:prose-base prose-sm max-w-none prose-code:text-[#227E82] prose-pre:bg-[#B1B1B1]"
-      />
-      <!-- <MDCslot
-        :value="post.body"
-        tag="article"
-        class="md:prose-base prose-sm max-w-none prose-code:text-[#227E82] prose-pre:bg-[#B1B1B1]"
+        class="md:prose-base prose-sm mabx-w-none prose-code:text-[#227E82] prose-pre:bg-[#B1B1B1]"
       /> -->
+      <ContentRenderer :value="post" class="" />
     </div>
     <div class="md:block hidden col-span-2">
       <h1
