@@ -17,6 +17,8 @@
     "@tailwindcss/vite": "^4.1.0",
     "minisearch": "^7.1.2",
     "nuxt": "^3.16.2",
+    "remark-emoji": "^5.0.1",
+    "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.1.0",
     "vue": "latest",
     "vue-router": "latest"
