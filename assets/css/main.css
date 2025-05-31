@@ -9,4 +9,12 @@ body{
     --color-green-1: #007163;
     --shadow-2xl: 1px 3px 47px -4px rgba(0,0,0,0.54);
   }
+
+.btn-primary {
+  @apply bg-green-1 text-white text-xl sm:text-2xl font-medium rounded-2xl px-8 py-3 hover:underline;
+}
+
+.btn-secondary {
+  @apply bg-white text-green-1 border-2 border-green-1 text-xl sm:text-2xl font-medium rounded-2xl px-8 py-3 hover:underline;
+}
   

@@ -1,23 +1,38 @@
+<script setup lang="ts">
+import { NuxtImg } from '#components'
+const description = ref('…loading…')
+
+onMounted(async () => {
+  const res = await fetch('content/secondsection.json')
+  const json = await res.json()
+  description.value = json.secondSection
+})
+</script>
+
+<!-- tambahkan saja class yg bergaris komentar -->
 <template>
-  <div class="bg-green-1 h-screen flex justify-center items-center">
-    <div class="flex h-fit w-[1581px] ">
-      <div class="flex flex-col max-w-[627px] mr-auto">
-        <div class="border-l-[24px] border-l-white pl-4">
-          <h1 class="font-extralight text-white text-[56px]">Apa itu</h1>
-          <Tealinux fill-color="white" />
+  <div class="bg-green-1 flex justify-center items-center py-14 h-screen">
+    <div class="flex flex-col lg:flex-row h-fit
+             w-[1581px] px-4 md:px-8" 
+      >
+      <div class="flex flex-col w-full lg:max-w-[627px] mb-10 lg:mb-0 lg:mr-auto">
+        <div class="border-l-[16px] lg:border-l-[24px] border-white pl-4">
+          <!-- font responsif -->
+          <h1 class="font-extralight text-white text-[40px] md:text-[48px] lg:text-[56px]">
+            Apa itu
+          </h1>
+          <NuxtImg src="/image/white_tealinux.svg" class="w-[140px] md:w-[180px] lg:w-[220px] xl:w-[290px]" />
         </div>
-        <p class="text-white text-[28px] text-justify mt-auto">TeaLinuxOS adalah distro Linux turunan Ubuntu yang
-          dikembangkan oleh
-          Dinus Open Source Community (DOSCOM) dan kawan-kawan yang berorientasi
-          pemrograman. Dengan menghadirkan filosofi, “Nikmatnya sebuah racikan”,
-          TeaLinuxOS dikembangkan secara terbuka dan bersama-sama untuk menghasilkan
-          distro Linux pemrograman untuk dunia pendidikan.</p>
+
+        <p class="text-white text-[18px] md:text-[22px] lg:text-[28px] text-justify
+                 leading-relaxed mt-6 lg:mt-auto">
+          {{ description }}
+        </p>
       </div>
 
-      <NuxtImg src="/image/logo_big2.svg" alt="" class="w-[767px] h-[720px]" />
+      <NuxtImg src="/image/logo_big2.svg" alt="" class="mx-auto lg:mx-0
+               w-[260px] md:w-[480px] lg:w-[560px] xl:w-[720px]
+               max-h-[70vh] object-contain" />
     </div>
   </div>
 </template>
-
-<script setup>
-</script>

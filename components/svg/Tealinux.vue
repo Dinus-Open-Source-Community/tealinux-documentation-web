@@ -10,7 +10,7 @@ defineProps({
   },
   fillColor: {
     type: String,
-    default: "currentColor",
+    default: "black",
   },
   strokeColor: {
     type: String,
