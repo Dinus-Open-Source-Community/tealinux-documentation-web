@@ -6,4 +6,8 @@ body{
 @theme {
     --font-archivo: "Archivo", "sans-serif";
   }
-  
+
+.prose-code {
+  background-color: aqua;
+  color: red;
+}
