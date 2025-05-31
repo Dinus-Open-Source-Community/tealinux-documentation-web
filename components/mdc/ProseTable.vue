@@ -26,7 +26,9 @@ defineProps({
             scope="col"
             class="px-6 py-3 text-white"
           >
-            {{ header }}
+            <div class="py-1 px-3">
+              {{ header }}
+            </div>
           </th>
         </tr>
       </thead>
@@ -47,7 +49,9 @@ defineProps({
             ]"
             scope="row"
           >
-            {{ cell }}
+            <div class="py-1 px-2">
+              {{ cell }}
+            </div>
           </td>
         </tr>
       </tbody>
