@@ -1,5 +1,4 @@
 <script setup>
-
 const slug = useRoute().params.slug
 const { data: post } = await useAsyncData(`docs-${slug}`, () => {
   return $fetch(`/api/${slug}`)
