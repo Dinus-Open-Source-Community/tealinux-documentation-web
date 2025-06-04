@@ -5,6 +5,16 @@ export default defineNuxtConfig({
   modules: ["@nuxt/content", "@nuxt/fonts", "@nuxtjs/mdc"],
 
   devtools: { enabled: true },
+  watchers: {
+    chokidar: {
+      usePolling: true,
+    }
+  },
+  nitro: {
+    watchOptions: {
+      usePolling:true,
+    }
+  },
 
   fonts: {
     families: [
@@ -17,6 +27,11 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   vite: {
     plugins: [tailwindcss()],
+    server:{
+      hmr:{
+        port: 3000,
+      }
+    }
   },
   mdc: {
     components: {
