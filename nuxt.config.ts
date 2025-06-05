@@ -1,18 +1,32 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from "@tailwindcss/vite"
+import tailwindcss from "@tailwindcss/vite";
+import lara from '@primeuix/themes/lara';
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
-  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image'],
+  compatibilityDate: "2024-11-01",
+  modules: [
+    "@nuxt/content",
+    "@nuxt/fonts",
+    "@nuxt/image",
+    "@primevue/nuxt-module",
+  ],
   devtools: { enabled: true },
-  fonts:{
+  fonts: {
     families: [
       {
-        name:'Archivo', provider:'google'
-      }
-    ]
+        name: "Archivo",
+        provider: "google",
+      },
+    ],
   },
-  css: ['~/assets/css/main.css'],
-  vite:{
-    plugins:[tailwindcss()]
-  }
-})
+  css: ["~/assets/css/main.css"],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  primevue: {
+        options: {
+            theme: {
+                preset: lara
+            }
+        }
+    }
+});

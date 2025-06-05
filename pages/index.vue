@@ -15,19 +15,21 @@ definePageMeta({
 </script>
 
 <template>
-  <!-- First section -->
-  <HeroSection />
+  <div class="max-w-[1920px]">
+    <!-- First section -->
+    <HeroSection />
 
-  <!-- Second section -->
-  <SecondSection />
+    <!-- Second section -->
+    <SecondSection />
 
-  <ThirdSection />
-  
+    <ThirdSection />
 
-  <FifthSection />
 
-  <!-- Sixt Section -->
-  <SixthSection/>
-  <!-- Footer -->
-  <Footer />
+    <FifthSection />
+
+    <!-- Sixt Section -->
+    <SixthSection />
+    <!-- Footer -->
+    <Footer />
+  </div>
 </template>

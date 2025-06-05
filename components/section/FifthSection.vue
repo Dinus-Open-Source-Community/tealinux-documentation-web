@@ -33,8 +33,20 @@ const splideOptions = {
 }
 
 const goTo = (index: number) => {
-  splideRef.value?.go(index);
-};
+  if (slides.value.length === 0) return
+  
+  let targetIndex = index
+  
+  // Handle wraparound manually
+  if (index >= slides.value.length) {
+    targetIndex = 0  // ke slide pertama jika melewati batas akhir
+  } else if (index < 0) {
+    targetIndex = slides.value.length - 1  // ke slide terakhir jika kurang dari 0
+  }
+  
+  splideRef.value?.go(targetIndex)
+  currentSlide.value = targetIndex
+}
 async function getData() {
   const res = await fetch('/content/fifthsection.json')
   const json = await res.json()
@@ -45,36 +57,33 @@ async function getData() {
 onMounted(() => {
     getData();
 
-  // Akses instance Splide dari komponen Vue wrapper
-  const splideInstance = splideRef.value?.splide;
-
+    const splideInstance = splideRef.value?.splide
   if (splideInstance) {
     splideInstance.on('move', (newIndex: number) => {
-      currentSlide.value = newIndex;
-    });
+      currentSlide.value = newIndex
+    })
   }
 });
 </script>
 
 <template>
   <!-- add horizontal padding for small screens -->
-  <section class="bg-green-1 flex flex-col items-center justify-center h-[100vh] px-4 sm:px-8">
+  <section class="bg-green-1 flex flex-col items-center justify-center h-screen lg:px-[8%] px-[5%]">
     <!-- constrain overall width but allow full‐width below lg -->
-    <div class="w-full max-w-[1581px] my-auto">
+    <div class="w-full my-auto">
       <!-- stack arrows & carousel vertically on mobile, horizontally on sm+ -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <LeftButton :on-click="() => goTo(currentSlide - 1)" />
-
+      <div class="flex flex-col-reverse sm:flex-row items-center justify-center gap-4">
+        <LeftButton :on-click="() => goTo(currentSlide - 1)" class="md:block hidden"/>
         <Splide :options="splideOptions" ref="splideRef" aria-label="TeaInstaller Carousel">
           <SplideSlide v-for="(slide, i) in slides" :key="i">
             <!-- stack content on xs, row on md+; adjust gaps responsively -->
-            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 lg:gap-16 mx-auto">
+            <div class="flex flex-col-reverse md:flex-row items-center gap-4 lg:gap-8 mx-auto px-[4%]">
               <!-- add small padding so text doesn't hit edges -->
-              <div class="space-y-6 text-white text-center lg:text-left px-2 sm:px-4">
-                <h2 class="font-semibold text-2xl sm:text-4xl lg:text-[89px]">
+              <div class="space-y-2 text-white md:text-left text-center lg:text-left lg:w-1/2">
+                <h2 class="font-semibold text-xl sm:text-2xl lg:text-[56px]">
                   {{ slide.title }}
                 </h2>
-                <p class="text-base sm:text-lg lg:text-[28px]">
+                <p class="text-base sm:text-lg lg:text-xl break-words">
                   {{ slide.text }}
                 </p>
               </div>
@@ -82,27 +91,26 @@ onMounted(() => {
               <NuxtImg
                 :src="slide.img"
                 alt=""
-                class="w-full sm:w-[600px] lg:w-[850px] lg:h-[575px] shadow-2xl rounded-[30px]"
+                class="w-[400px] md:w-[525px] lg:w-[650px] shadow-2xl rounded-[30px]"
               />
             </div>
           </SplideSlide>
         </Splide>
 
-        <RightButton :on-click="() => goTo(currentSlide + 1)" theme="green" />
+        <RightButton :on-click="() => goTo(currentSlide + 1)" theme="green" class="md:block hidden"/>
       </div>
 
-      <!-- make pagination scrollable on small widths -->
-      <div class="flex space-x-4 overflow-x-auto justify-center py-4">
-        <button
-          v-for="(_, index) in slides"
-          :key="index"
-          @click="goTo(index)"
-          :class="[
-            'duration-300 ease-in-out transition-all h-3 rounded-full cursor-pointer',
-            currentSlide === index ? 'bg-white w-[98px]' : 'border-[3px] border-white w-12'
-          ]"
-        ></button>
-      </div>
+    </div>
+    <div class="flex space-x-4 overflow-x-auto justify-center py-6">
+      <button
+        v-for="(_, index) in slides"
+        :key="index"
+        @click="goTo(index)"
+        :class="[
+          'duration-300 ease-in-out transition-all lg:h-3 h-2 rounded-full cursor-pointer',
+          currentSlide === index ? 'bg-white lg:w-[98px] w-[64px]' : 'border-[3px] border-white w-9 lg:w-12'
+        ]"
+      ></button>
     </div>
   </section>
 </template>

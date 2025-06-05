@@ -10,11 +10,78 @@ body{
     --shadow-2xl: 1px 3px 47px -4px rgba(0,0,0,0.54);
   }
 
+:root {
+  /* ... variabel PrimeVue untuk LIGHT mode Anda ... */
+  --p-primary-color: var(--color-green-1); /* Ini akan menjadi warna utama untuk tombol, highlight, dll. */
+  --p-primary-50: #e0f2f1;
+  --p-primary-100: #b2dfdb;
+  --p-primary-200: #80cbc4;
+  --p-primary-300: #4db6ac;
+  --p-primary-400: #26a69a;
+  --p-primary-500: var(--color-green-1);
+  --p-primary-600: #006a5e;
+  --p-primary-700: var(--color-green-0);
+  --p-primary-800: #00361c;
+  --p-primary-900: #00220e;
+
+  --p-text-color: #333333; /* Teks default gelap */
+  --p-text-color-secondary: #6b7280;
+  --p-primary-text-color: var(--color-white); /* Teks putih di atas hijau primer */
+
+  --p-surface-0: var(--color-white); /* Latar belakang komponen utama */
+  --p-surface-50: #f8fafc;
+  /* ... variabel surface lainnya untuk light mode ... */
+}
+
+/* --- Variabel PrimeVue untuk DARK Mode --- */
+/* Class ini perlu ditambahkan ke <body> atau <html> saat dark mode aktif */
+.p-dark {
+  /* Tema utama tetap hijau primary Anda */
+  --p-primary-color: var(--color-green-1);
+
+  /* Teks di atas warna primary (seperti tombol) tetap putih */
+  --p-primary-text-color: var(--color-white);
+
+  /* Atur skala hijau primer untuk dark mode.
+     Bisa sama dengan light mode atau disesuaikan jika ingin sedikit berbeda. */
+  --p-primary-50: #0a1f1b; /* Lebih gelap dari light mode */
+  --p-primary-100: #143e37;
+  --p-primary-200: #1e5c54;
+  --p-primary-300: #287b70;
+  --p-primary-400: #32998d;
+  --p-primary-500: var(--color-green-1); /* Hijau Agak Cerah sebagai inti */
+  --p-primary-600: #006a5e;
+  --p-primary-700: var(--color-green-0); /* Hijau Tua */
+  --p-primary-800: #00361c;
+  --p-primary-900: #00220e;
+
+
+  /* Ubah WARNA TEKS utama menjadi PUTIH untuk dark mode */
+  --p-text-color: var(--color-white);
+  --p-text-color-secondary: #a0aec0; /* Teks sekunder untuk dark mode */
+
+  /* Ubah WARNA LATAR BELAKANG KOMPONEN menjadi gelap untuk dark mode */
+  --p-surface-0: #1e1e1e; /* Contoh: abu-abu sangat gelap */
+  --p-surface-50: #2a2a2a; /* Sedikit lebih terang dari surface-0 */
+  --p-surface-100: #363636;
+  --p-surface-200: #424242;
+  --p-surface-300: #505050;
+  --p-surface-400: #6a6a6a;
+  --p-surface-500: #888888;
+  --p-surface-600: #aaaaaa;
+  --p-surface-700: #cccccc;
+  --p-surface-800: #eeeeee;
+  --p-surface-900: #f5f5f5;
+
+  /* Latar belakang konten (jika PrimeVue menggunakan ini) */
+  --p-content-background: var(--p-surface-0);
+}
+
 .btn-primary {
-  @apply bg-green-1 text-white text-xl sm:text-2xl font-medium rounded-2xl px-8 py-3 hover:underline;
+  @apply bg-green-1 text-white lg:text-2xl md:text-lg text-sm font-medium rounded-xl px-8 py-3 hover:underline;
 }
 
 .btn-secondary {
-  @apply bg-white text-green-1 border-2 border-green-1 text-xl sm:text-2xl font-medium rounded-2xl px-8 py-3 hover:underline;
+  @apply bg-white text-green-1 border-2 border-green-1 lg:text-2xl md:text-lg text-sm font-medium rounded-xl px-8 py-3 hover:underline;
 }
   

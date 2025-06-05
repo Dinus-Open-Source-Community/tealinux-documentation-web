@@ -1,14 +1,13 @@
 <template>
-  <div class="bg-green-1 min-h-[600px] sm:min-h-[680px] lg:min-h-[760px] xl:min-h-[860px] 2xl:min-h-[960px]">
+  <div class="bg-green-1 h-screen">
 
     <div
       :class="[
         // layout wrapper
-        'bg-white flex w-full items-center justify-center gap-4',
-        // tinggi adaptif
-        'min-h-[600px] sm:min-h-[680px] lg:min-h-[760px] xl:min-h-[860px] 2xl:min-h-[960px]',
+        'bg-white flex md:flex-row flex-col w-full items-center justify-center gap-4',
+        'h-screen',
         // radius bawah tidak terlalu ekstrem di layar pendek
-        'rounded-b-[60px] sm:rounded-b-[80px] lg:rounded-b-[100px]',
+        'rounded-b-[50px] sm:rounded-b-[70px] lg:rounded-b-[80px]',
         customClass
       ]"
     >
@@ -16,15 +15,15 @@
       <NuxtImg
         src="/image/logo_big.svg"
         alt="logo big"
-        class="w-[220px] sm:w-[300px] md:w-[340px] lg:w-[392px]"
+        class="lg:w-[300px] md:w-[240px] w-[200px]"
       />
   
       <!-- text + buttons -->
-      <div class="space-y-6 sm:space-y-8 text-center lg:text-left">
+      <div class="space-y-6 text-center lg:text-left">
         <!-- judul fluid -->
         <h1
-          class="font-medium text-green-1 leading-tight
-                 text-[40px] sm:text-[60px] md:text-[80px] lg:text-[90px] xl:text-[100px]"
+          class="font-semibold text-green-1 leading-tight
+                 lg:text-[60px] md:text-[48px] text-[36px]"
         >
           TeaLinux <span class="font-extralight">“Celia”</span>
         </h1>
@@ -33,7 +32,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center lg:justify-start gap-4">
           <NuxtLink to="#">
             <button
-              class="btn-primary w-[334px] cursor-pointer"
+              class="btn-primary lg:w-[230px] w-[190px] cursor-pointer"
             >
               Download
             </button>
@@ -41,7 +40,7 @@
   
           <NuxtLink to="#">
             <button
-              class="btn-secondary w-[334px] cursor-pointer"
+              class="btn-secondary lg:w-[230px] w-[190px] cursor-pointer"
             >
               How to install?
             </button>
