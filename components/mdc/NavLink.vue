@@ -2,12 +2,6 @@
 import { computed } from "vue";
 import Card from "./Card.vue";
 
-interface NavCardData {
-  title?: string;
-  description?: string;
-  href?: string;
-}
-
 const props = defineProps<{
   prevTitle?: string;
   prevDescription?: string;
@@ -17,42 +11,27 @@ const props = defineProps<{
   nextHref?: string;
 }>();
 
-const prev: NavCardData = {
-  title: props.prevTitle,
-  description: props.prevDescription,
-  href: props.prevHref,
-};
-
-const next: NavCardData = {
-  title: props.nextTitle,
-  description: props.nextDescription,
-  href: props.nextHref,
-};
-
-const hasPrev = computed(() => !!prev.title && !!prev.href);
-const hasNext = computed(() => !!next.title && !!next.href);
+const hasPrev = computed(() => props.prevTitle && props.prevHref);
+const hasNext = computed(() => props.nextTitle && props.nextHref);
 </script>
 
 <template>
-  <div
-    class="w-full max-w-6xl mx-auto mt-16 flex flex-col md:flex-row justify-between gap-6"
-  >
+  <div class="w-full max-w-6xl mx-auto mt-16 flex justify-between">
     <div v-if="hasPrev" class="flex-1">
       <Card
-        :title="prev.title!"
-        :description="prev.description || ''"
-        :href="prev.href!"
+        :title="props.prevTitle!"
+        :description="props.prevDescription!"
+        :href="props.prevHref!"
       />
     </div>
-    <div
-      v-if="hasNext"
-      class="flex-1"
-      :class="{ 'text-right': hasPrev && hasNext }"
-    >
+
+    <div v-if="!hasPrev && hasNext" class="flex-1"></div>
+
+    <div v-if="hasNext" class="flex-1 text-right">
       <Card
-        :title="next.title!"
-        :description="next.description || ''"
-        :href="next.href!"
+        :title="props.nextTitle!"
+        :description="props.nextDescription!"
+        :href="props.nextHref!"
       />
     </div>
   </div>

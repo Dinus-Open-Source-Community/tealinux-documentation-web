@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   mdc: {
+    highlight: false,
     components: {
       prose: true,
       map: {

@@ -1,19 +1,21 @@
 <script lang="ts" setup>
-defineProps({
+const props = defineProps({
   headers: {
     type: Array as () => string[],
-    required: true,
+    required: false,
   },
   rows: {
     type: Array as () => string[][],
-    required: true,
+    required: false,
   },
 });
 </script>
 
 <template>
   <div class="relative overflow-x-auto mt-5 mb-5">
+    <!-- Jika pakai props -->
     <table
+      v-if="props.headers && props.rows"
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
     >
       <thead
@@ -21,7 +23,7 @@ defineProps({
       >
         <tr>
           <th
-            v-for="(header, index) in headers"
+            v-for="(header, index) in props.headers"
             :key="index"
             scope="col"
             class="px-6 py-3 text-white"
@@ -34,7 +36,7 @@ defineProps({
       </thead>
       <tbody>
         <tr
-          v-for="(row, rowIndex) in rows"
+          v-for="(row, rowIndex) in props.rows"
           :key="rowIndex"
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
         >
@@ -56,5 +58,8 @@ defineProps({
         </tr>
       </tbody>
     </table>
+
+    <!-- Jika tidak pakai props, render slot -->
+    <slot v-else />
   </div>
 </template>
