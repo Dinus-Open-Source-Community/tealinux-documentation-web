@@ -2,45 +2,57 @@
 import { computed } from "vue";
 import Card from "./Card.vue";
 
+interface NavCardData {
+  title?: string;
+  description?: string;
+  href?: string;
+}
+
 const props = defineProps<{
-  prev?: {
-    title: string;
-    description: string;
-    href: string;
-  };
-  next?: {
-    title: string;
-    description: string;
-    href: string;
-  };
+  prevTitle?: string;
+  prevDescription?: string;
+  prevHref?: string;
+  nextTitle?: string;
+  nextDescription?: string;
+  nextHref?: string;
 }>();
 
-const isFirstPage = computed(() => !props.prev && props.next);
-const isLastPage = computed(() => props.prev && !props.next);
-const isMiddlePage = computed(() => props.prev && props.next);
+const prev: NavCardData = {
+  title: props.prevTitle,
+  description: props.prevDescription,
+  href: props.prevHref,
+};
+
+const next: NavCardData = {
+  title: props.nextTitle,
+  description: props.nextDescription,
+  href: props.nextHref,
+};
+
+const hasPrev = computed(() => !!prev.title && !!prev.href);
+const hasNext = computed(() => !!next.title && !!next.href);
 </script>
 
 <template>
   <div
     class="w-full max-w-6xl mx-auto mt-16 flex flex-col md:flex-row justify-between gap-6"
   >
-    <div v-if="isMiddlePage || isLastPage" class="flex-1">
+    <div v-if="hasPrev" class="flex-1">
       <Card
-        :title="props.prev!.title"
-        :description="props.prev!.description"
-        :href="props.prev!.href"
+        :title="prev.title!"
+        :description="prev.description || ''"
+        :href="prev.href!"
       />
     </div>
-
     <div
-      v-if="isMiddlePage || isFirstPage"
+      v-if="hasNext"
       class="flex-1"
-      :class="{ 'text-right': isMiddlePage }"
+      :class="{ 'text-right': hasPrev && hasNext }"
     >
       <Card
-        :title="props.next!.title"
-        :description="props.next!.description"
-        :href="props.next!.href"
+        :title="next.title!"
+        :description="next.description || ''"
+        :href="next.href!"
       />
     </div>
   </div>
