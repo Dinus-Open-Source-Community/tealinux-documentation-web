@@ -1,15 +1,18 @@
 <script setup>
-const {data:post} = await useAsyncData('docs', () => {
-    return $fetch('/api/navigation')
-})
-
+const { data: post } = await useAsyncData("docs", () => {
+  return $fetch("/api/navigation");
+});
 </script>
 <template>
-    <div>
-        <ul>
-            <li v-for="(item, index) in post" :key="index" class="text-[#424242] my-2 font-archivo font-[500]">
-                <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
-            </li>
-        </ul>
-    </div>
+  <div>
+    <ul>
+      <li
+        v-for="(item, index) in post"
+        :key="index"
+        class="text-[#424242] my-2 font-archivo font-[500]"
+      >
+        <NuxtLink :to="item.path">{{ item.title }}{{ item.path }}</NuxtLink>
+      </li>
+    </ul>
+  </div>
 </template>
