@@ -1,18 +1,26 @@
 <script setup>
-const slug = useRoute().params.slug
-const { data: post } = await useAsyncData(`docs-${slug}`, () => {
-  return $fetch(`/api/${slug}`)
-})
+const route = useRoute();
+const slug = route.params.slug;
 
-const route = useRoute()
-console.log('Current route:', route.path)
+const fullPath = Array.isArray(slug)
+  ? slug.join("/")
+  : slug;
+
+const { data: post, error } = await useAsyncData(`docs-${fullPath}`, () => {
+  return $fetch(`/api/${fullPath}`); 
+});
+if (error.value) {
+  console.error('Error fetching post:', error.value);
+}
+
+console.log('Post data:', post);
+
+console.log('Current route:', route.path);
 
 const iconColorClass = computed(() =>
   route.path === '/documentation/introduction' ? 'text-primary' : 'text-[#424242]'
 );
-
 </script>
-
 <template>
     <DocsHeader/>
     <hr class="border border-[#858585]">
@@ -33,6 +41,7 @@ const iconColorClass = computed(() =>
             <p class="text-sm text-primary">{{ post.title }}</p>
           </div>
           <ContentRenderer :value="post" class="md:prose-base prose-sm max-w-none md:px-24 prose-code:text-[#227E82] prose-pre:bg-[#B1B1B1]"/>
+          <p>{{ post }}</p>
         </div>
         <div class="md:block hidden col-span-2">
           <h1 v-for="(item, index) in post.body?.toc?.links || []" :key="index" class="my-2">
