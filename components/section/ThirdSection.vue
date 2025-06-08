@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-fit bg-[url(/public/image/pattern.png)] bg-cover bg-no-repeat">
+  <div class="h-fit bg-[url(/public/image/Pattern.png)] bg-white bg-cover bg-no-repeat">
     <div class="lg:h-[80vh] h-fit flex justify-center items-center px-[8%] py-[5%]">
       <div class="w-full flex flex-col h-full md:justify-start justify-center items-center md:items-start">
         <div class="md:border-l-[16px] border-green-1 md:pl-4">

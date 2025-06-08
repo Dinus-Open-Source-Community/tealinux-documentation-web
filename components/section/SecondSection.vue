@@ -23,7 +23,7 @@ onMounted(async () => {
 
       <p class="text-white text-[18px] lg:text-[22px]
              text-justify leading-relaxed mt-6 lg:mt-auto
-             w-full lg:w-fit      <!-- was w-fit -->
+             w-full lg:w-fit      
       ">
         {{ description }}
       </p>

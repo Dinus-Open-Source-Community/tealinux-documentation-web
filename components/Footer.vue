@@ -36,7 +36,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div :class="['bg-green-1 flex h-fit items-center py-[5%] px-[7%]', customClass]">
+  <div :class="['bg-green-1 flex h-fit items-center py-[1%] px-[7%]', customClass]">
     <div class="md:h-[367px] flex md:flex-row flex-col gap-[7%] md:items-center flex-1">
       <NuxtImg src="/image/logo_footer.svg" class="lg:w-[225px] hidden xl:block" />
 
@@ -45,7 +45,7 @@ onMounted(async () => {
           <NuxtImg src="/image/logo_footer.svg" class="w-[30px] block md:hidden" />
           <h1 class="font-semibold text-white xl:text-[56px] lg:text-[48px] md:text-[44px] sm:text-[32px]">TeaLinux OS</h1>
         </div>
-        <p class="text-justify text-white lg:text-base text-xs">
+        <p class="text-justify text-white font-light lg:text-base text-xs">
           TeaLinuxOS adalah distro Linux turunan Ubuntu yang dikembangkan oleh Dinus Open Source Community (DOSCOM)
           dan kawan-kawan yang berorientasi pemrograman. Dengan menghadirkan filosofi, “Nikmatnya sebuah racikan”,
           TeaLinuxOS dikembangkan secara terbuka dan bersama-sama untuk menghasilkan distro Linux pemrograman untuk

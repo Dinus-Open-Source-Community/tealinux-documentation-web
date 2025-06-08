@@ -65,7 +65,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="bg-[url(/public/image/pattern.png)] bg-cover bg-center min-h-screen flex flex-col md:p-8 lg:px-[7%] px-[3%] py-[20%] md:py-[6%] lg:py-[5%]">
+    class="bg-[url(/public/image/Pattern.png)] bg-white text-black bg-cover bg-center min-h-screen flex flex-col md:p-8 lg:px-[7%] px-[3%] py-[20%] md:py-[6%] lg:py-[5%]">
     <div class="flex flex-col flex-1 h-full w-full max-w-screen-xl relative lg:gap-y-16 md:gap-y-12 gap-y-6">
       <div class="md:border-l-[16px] border-l-green-1 md:pl-4 text-center md:text-left">
         <h1 class="font-extralight text-green-1 text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px]">From the</h1>
@@ -84,7 +84,7 @@ onMounted(() => {
 
               <div class="flex flex-col items-center justify-center gap-y-2 lg:gap-y-3 mt-4">
                 <h3 class="text-green-1 font-medium text-xl sm:text-2xl md:text-3xl">{{ slide.author }}</h3>
-                <NuxtImg src="/image/Black.svg" alt="Quotation mark" class="w-[20px] lg:w-[28px]" />
+                <NuxtImg src="/image/black.svg" alt="Quotation mark" class="w-[20px] lg:w-[28px]" />
               </div>
             </div>
           </SplideSlide>

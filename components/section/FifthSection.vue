@@ -68,7 +68,7 @@ onMounted(() => {
 
 <template>
   <!-- add horizontal padding for small screens -->
-  <section class="bg-green-1 flex flex-col items-center justify-center h-screen lg:px-[8%] px-[5%]">
+  <section class="bg-green-1 flex flex-col items-center justify-center h-screen lg:px-[7%] px-[5%]">
     <!-- constrain overall width but allow full‐width below lg -->
     <div class="w-full my-auto">
       <!-- stack arrows & carousel vertically on mobile, horizontally on sm+ -->
@@ -107,8 +107,8 @@ onMounted(() => {
         :key="index"
         @click="goTo(index)"
         :class="[
-          'duration-300 ease-in-out transition-all lg:h-3 h-2 rounded-full cursor-pointer',
-          currentSlide === index ? 'bg-white lg:w-[98px] w-[64px]' : 'border-[3px] border-white w-9 lg:w-12'
+          'duration-700 ease-in-out transition-all lg:h-3 h-2 rounded-full cursor-pointer',
+          currentSlide === index ? 'bg-white lg:w-[50px] w-[40px]' : 'bg-[#1f5650] w-2 lg:w-3'
         ]"
       ></button>
     </div>
