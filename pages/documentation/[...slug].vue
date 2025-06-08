@@ -17,7 +17,7 @@ const iconColorClass = computed(() =>
     <DocsHeader/>
     <hr class="border border-[#858585]">
     <div v-if="post">
-      <div class="grid grid-cols-12 md:min-h-screen bg-[#D9D9D9] py-10 font-archivo">
+      <div class="grid grid-cols-12 md:min-h-screen bg-[#D9D9D9] py-10 font-archivo mt-20">
         <div class="col-span-2 md:grid hidden text-left pl-9">
           <DocsSidebar/>
         </div>
@@ -43,7 +43,7 @@ const iconColorClass = computed(() =>
         </div>
       </div>
     </div>
-    <div v-else>
+    <div v-else class="bg-[#D9D9D9] h-screen mt-20">
       <p class="text-center py-10">Loading documentation...</p>
     </div>
   </template>

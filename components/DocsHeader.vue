@@ -17,7 +17,7 @@ onUnmounted(() => {
 })
 </script>
 <template>
-    <div class="px-10 md:flex hidden justify-between py-4 items-center font-archivo bg-primary ">
+    <div class="px-10 md:flex hidden justify-between py-4 items-center font-archivo z-99 bg-primary fixed w-full">
         <h1 class="text-[25px] text-white font-extrabold tracking-wide"><span class="text-[40px] tracking-wide">TeaLinux</span> Docs</h1>  
         <div class="flex gap-4 items-center">
             <div class="flex items-center gap-2 w-full max-w-md px-4 py-2.5 bg-[#ffffff] rounded-full">
