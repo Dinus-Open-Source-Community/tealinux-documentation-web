@@ -11,7 +11,7 @@ const { data: post } = await useAsyncData("docs", () => {
         :key="index"
         class="text-[#424242] my-2 font-archivo font-[500]"
       >
-        <NuxtLink :to="item.path">{{ item.title }}{{ item.path }}</NuxtLink>
+        <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
       </li>
     </ul>
   </div>
