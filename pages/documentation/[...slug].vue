@@ -9,13 +9,6 @@ const fullPath = Array.isArray(slug)
 const { data: post, error } = await useAsyncData(`docs-${fullPath}`, () => {
   return $fetch(`/api/${fullPath}`); 
 });
-if (error.value) {
-  console.error('Error fetching post:', error.value);
-}
-
-console.log('Post data:', post);
-
-console.log('Current route:', route.path);
 
 const iconColorClass = computed(() =>
   route.path === '/documentation/introduction' ? 'text-primary' : 'text-[#424242]'
@@ -25,7 +18,7 @@ const iconColorClass = computed(() =>
     <DocsHeader/>
     <hr class="border border-[#858585]">
     <div v-if="post">
-      <div class="grid grid-cols-12 md:min-h-screen bg-[#D9D9D9] py-10 font-archivo mt-20">
+      <div class="grid grid-cols-12 md:min-h-screen bg-[#D9D9D9] py-10 font-archivo md:mt-20 mt-13">
         <div class="col-span-2 md:grid hidden text-left pl-9">
           <DocsSidebar/>
         </div>
@@ -41,7 +34,6 @@ const iconColorClass = computed(() =>
             <p class="text-sm text-primary">{{ post.title }}</p>
           </div>
           <ContentRenderer :value="post" class="md:prose-base prose-sm max-w-none md:px-24 prose-code:text-[#227E82] prose-pre:bg-[#B1B1B1]"/>
-          <p>{{ post }}</p>
         </div>
         <div class="md:block hidden col-span-2">
           <h1 v-for="(item, index) in post.body?.toc?.links || []" :key="index" class="my-2">
