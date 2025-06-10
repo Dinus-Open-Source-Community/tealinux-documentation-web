@@ -105,7 +105,6 @@ onUnmounted(() => {
         <span class="text-sm text-gray-500 hidden sm:inline-block">CTRL + K</span>
       </button>
       
-      <!-- Theme Toggle -->
       <div class="rounded-lg p-3 bg-[#ffffff]">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10c0-.463-.694-.54-.933-.143a6.5 6.5 0 1 1-8.924-8.924C12.54 2.693 12.463 2 12 2C6.477 2 2 6.477 2 12s4.477 10 10 10" class="text-[#5C5C5C]"/>
@@ -121,9 +120,7 @@ onUnmounted(() => {
         class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm"
         @click="handleModalClick"
       >
-        <!-- Modal Content -->
         <div class="w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden animate-modal-enter flex flex-col h-[600px]">
-          <!-- Fixed Modal Header -->
           <div class="flex items-center gap-3 p-6 border-b border-gray-200 flex-shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 flex-shrink-0">
               <circle cx="11" cy="11" r="8"></circle>
@@ -172,7 +169,6 @@ onUnmounted(() => {
               </div>
             </div>
 
-            <!-- No results state -->
             <div v-else-if="query && result.length === 0" class="p-8 text-center text-gray-500">
               <div class="mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-gray-300">
@@ -184,7 +180,6 @@ onUnmounted(() => {
               <p class="text-sm">Try searching with different keywords</p>
             </div>
 
-            <!-- Initial state -->
             <div v-else class="p-8 text-center text-gray-500">
               <div class="mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-gray-300">
@@ -197,7 +192,6 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Fixed Modal Footer -->
           <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex-shrink-0">
             <div class="flex items-center justify-between text-sm text-gray-500">
               <div class="flex items-center gap-4">
@@ -215,7 +209,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Modal transitions */
 .modal-enter-active, .modal-leave-active {
   transition: all 0.3s ease;
 }
@@ -229,7 +222,6 @@ onUnmounted(() => {
   transform: scale(0.95) translateY(-20px);
 }
 
-/* Modal animation */
 .animate-modal-enter {
   animation: modalEnter 0.3s ease-out;
 }
@@ -265,7 +257,6 @@ onUnmounted(() => {
 }
 
 
-/* Keyboard shortcuts styling */
 kbd {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 0.75rem;
