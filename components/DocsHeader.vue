@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { useAsyncData } from '#app';
 import MiniSearch from 'minisearch';
 
 
