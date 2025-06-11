@@ -1,5 +1,3 @@
 <template>
-    <UApp>
-      <NuxtPage />
-    </UApp>
+    <h1>asaisbijaabj</h1>
   </template>
