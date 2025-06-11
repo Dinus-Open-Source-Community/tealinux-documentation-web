@@ -1,10 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-body{
-  font-family: 'Archivo';
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
+
+body {
+  font-family: "Archivo";
 }
 @theme {
-    --font-archivo: "Archivo", "sans-serif";
-    --color-primary: #007163;
-  }
-  
+  --font-archivo: "Archivo", "sans-serif";
+  --color-primary: #007163;
+}
