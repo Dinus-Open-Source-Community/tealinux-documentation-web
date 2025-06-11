@@ -144,7 +144,7 @@ const NavigationItem = (props) => {
 
 .sticky-nav {
   position: sticky;
-  top: 20px; /* Sesuaikan jarak dari atas sesuai kebutuhan */
+  top: 100px; /* Sesuaikan jarak dari atas sesuai kebutuhan */
   max-height: calc(100vh - 40px); /* Sesuaikan tinggi maksimum */
   overscroll-behavior: contain; /* Mencegah scroll mempengaruhi elemen induk */
 }
