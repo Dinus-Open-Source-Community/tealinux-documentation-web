@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted, onBeforeUnmount, computed, watchEffect } from 'vue'; // Make sure onMounted is imported
 const route = useRoute();
 const slug = route.params.slug;
 
@@ -13,6 +14,7 @@ const iconColorClass = computed(() =>
     ? "text-primary"
     : "text-[#424242]"
 );
+
 const breadcrumb = computed(() => {
   if (!post.value?.path) return '';
   
@@ -28,8 +30,46 @@ const breadcrumb = computed(() => {
   
   return breadcrumbParts.join(' > ');
 });
-</script>
 
+
+const activeId = ref(null);
+const observer = ref(null);
+
+onMounted(() => {
+  watchEffect(() => {
+    if (observer.value) {
+      observer.value.disconnect();
+    }
+  
+    if (!post.value) {
+      return;
+    }
+  
+    const observerOptions = {
+      root: null, 
+      rootMargin: "-40% 0px -55% 0px",
+      threshold: 0 
+    };
+  
+    observer.value = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeId.value = entry.target.id;
+        }
+      });
+    }, observerOptions);
+  
+    const elements = document.querySelectorAll('.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6');
+    elements.forEach(el => observer.value.observe(el));
+  });
+});
+
+onBeforeUnmount(() => {
+  if (observer.value) {
+    observer.value.disconnect();
+  }
+});
+</script>
 <template>
   <DocsHeader />
   <hr class="border border-[#858585]" />
@@ -37,12 +77,10 @@ const breadcrumb = computed(() => {
     <div
       class="grid grid-cols-12 md:min-h-screen bg-[#D9D9D9] py-10 font-archivo md:mt-20 mt-13"
     >
-      <!-- Sidebar -->
       <div class="col-span-2 md:grid hidden text-left pl-9">
         <DocsSidebar />
       </div>
 
-      <!-- Main Content -->
       <div
         class="md:col-span-8 col-span-12 pl-5 pr-3 before:content-[w-10 border-l-[1px] py-2 pl-3 border-[#858585] ]"
       >
@@ -70,11 +108,10 @@ const breadcrumb = computed(() => {
         </div>
         <ContentRenderer
           :value="post"
-          class="md:prose-base prose-sm max-w-none md:px-24 prose-code:text-[#227E82] prose-pre:bg-[#B1B1B1]"
+          class="prose md:prose-base prose-sm max-w-none md:px-24 prose-code:text-[#227E82] prose-pre:bg-[#B1B1B1]"
         />
       </div>
 
-      <!-- Table of Contents -->
       <div class="md:block hidden col-span-2 pr-4">
         <div class="sticky-toc">
           <div class="toc-content">
@@ -83,7 +120,8 @@ const breadcrumb = computed(() => {
               :key="index"
               class="my-2"
               :style="{ paddingLeft: `${item.depth * 12}px` }"
-              :class="{ 'text-primary': route.hash === `#${item.id}` }"
+              
+              :class="{ 'text-primary': activeId === item.id }" 
             >
               <a
                 :href="'#' + item.id"
@@ -105,7 +143,7 @@ const breadcrumb = computed(() => {
 <style scoped>
 .sticky-toc {
   position: sticky;
-  top: 100px; /* Adjust based on your header height */
+  top: 100px; 
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -117,7 +155,6 @@ const breadcrumb = computed(() => {
   padding-left: 12px;
 }
 
-/* Scrollbar styling */
 .sticky-toc::-webkit-scrollbar {
   width: 4px;
 }
@@ -139,5 +176,6 @@ const breadcrumb = computed(() => {
 .text-primary {
   color: #227e82; /* Adjust to match your primary color */
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 </style>
