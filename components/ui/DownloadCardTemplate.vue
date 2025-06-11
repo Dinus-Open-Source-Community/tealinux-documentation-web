@@ -34,7 +34,7 @@ const timelineData = ref([
             </h1>
         </div>
         
-        <div class="px-8 py-6 h-3/5 overflow-y-auto">
+        <div class="px-12 py-6 h-3/5 overflow-y-auto">
             <ol class="relative border-s border-gray-300">                  
                 <li v-for="(item, index) in timelineData" :key="item.id" 
                     :class="index === timelineData.length - 1 ? 'ms-6' : 'mb-8 ms-6'">
@@ -44,10 +44,10 @@ const timelineData = ref([
                         </svg>
                     </span>
                     <div class="ml-2">
-                        <h3 class="flex items-center mb-1 text-lg font-semibold text-white">
+                        <h3 class="flex items-center mb-1 md:text-lg text-sm font-semibold text-white">
                             {{ item.title }}
                         </h3>
-                        <p class="mb-4 text-base font-normal text-gray-200">
+                        <p class="mb-4 md:text-base font-normal text-sm text-gray-200">
                             {{ item.description }}
                         </p>
                     </div>
