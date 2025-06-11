@@ -57,7 +57,7 @@ const currentStyle = typeStyles[props.type || "danger"];
       </strong>
     </div>
 
-    <p class="mt-2 text-sm" :class="currentStyle.text">
+    <p class="mt-2 text-md" :class="currentStyle.text">
       {{
         message ||
         "An unexpected error occurred. Please try again later or contact support."
