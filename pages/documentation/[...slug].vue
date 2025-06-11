@@ -13,6 +13,21 @@ const iconColorClass = computed(() =>
     ? "text-primary"
     : "text-[#424242]"
 );
+const breadcrumb = computed(() => {
+  if (!post.value?.path) return '';
+  
+  const pathParts = post.value.path.replace(/^\//, '').split('/');
+  
+  if (pathParts[0] === 'documentation') {
+    pathParts.shift();
+  }
+  
+  const breadcrumbParts = pathParts.map(part => 
+    part.replace(/-/g, ' ')
+  );
+  
+  return breadcrumbParts.join(' > ');
+});
 </script>
 
 <template>
@@ -34,7 +49,7 @@ const iconColorClass = computed(() =>
         <div
           class="md:px-24 flex gap-4 items-center pb-9 text-sm text-[#424242]"
         >
-          <a href="/documentation/introduction">
+          <a href="/documentation/welcome-to-tealinuxos/welcome">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -51,7 +66,7 @@ const iconColorClass = computed(() =>
             </svg>
           </a>
           <p class="text-[#424242]">></p>
-          <p class="text-sm text-primary">{{ post.title }}</p>
+          <p class="text-sm text-primary">{{ breadcrumb }}</p>
         </div>
         <ContentRenderer
           :value="post"
@@ -62,7 +77,6 @@ const iconColorClass = computed(() =>
       <!-- Table of Contents -->
       <div class="md:block hidden col-span-2 pr-4">
         <div class="sticky-toc">
-          <h2 class="text-lg font-bold mb-4 text-[#4A4A4A]">On This Page</h2>
           <div class="toc-content">
             <div
               v-for="(item, index) in post.body?.toc?.links || []"

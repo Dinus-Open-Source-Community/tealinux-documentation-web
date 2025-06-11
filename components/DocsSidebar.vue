@@ -63,7 +63,7 @@ const NavigationItem = (props) => {
               "span",
               {
                 class:
-                  "flex-1 cursor-pointer hover:text-blue-600 transition-colors",
+                  "flex-1 text-[18px] cursor-pointer hover:bg-[#bab8b3] hover:text-primary rounded-lg pl-3 transition-colors",
                 onClick: () => toggleExpanded(item.path),
               },
               item.title
@@ -72,7 +72,7 @@ const NavigationItem = (props) => {
               resolveComponent("NuxtLink"),
               {
                 to: item.path,
-                class: "flex-1 hover:text-blue-600 transition-colors",
+                class: "flex-1 hover:text-primary hover:bg-[#bab8b3] rounded-lg pl-3 mr-2 transition-colors",
               },
               item.title
             ),
@@ -87,7 +87,6 @@ const NavigationItem = (props) => {
                 { "rotate-90": isExpanded },
               ],
             },
-            "▶"
           ),
       ]),
 
