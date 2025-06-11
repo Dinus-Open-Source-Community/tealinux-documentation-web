@@ -87,7 +87,7 @@ onBeforeUnmount(() => {
         <div
           class="md:px-24 flex gap-4 items-center pb-9 text-sm text-[#424242]"
         >
-          <a href="/documentation/welcome-to-tealinuxos/welcome">
+          <a href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
