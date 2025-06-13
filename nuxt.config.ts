@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     watchOptions: {
       usePolling: true,
     },
+    preset: "bun",
   },
 
   fonts: {
