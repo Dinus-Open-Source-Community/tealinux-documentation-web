@@ -337,7 +337,7 @@ const NavigationItem = (props: NavigationItemProps) => {
               v-model="query"
               type="text"
               placeholder="Search documentation..."
-              class="flex-1 text-lg border-none focus:outline-none focus:ring-0 bg-transparent"
+              class="flex-1 text-lg border-none text-gray-600 focus:outline-none focus:ring-0 bg-transparent"
               @keydown.esc="closeModal"
             />
             <button
