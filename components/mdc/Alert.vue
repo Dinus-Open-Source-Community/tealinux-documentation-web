@@ -35,7 +35,7 @@ const currentStyle = typeStyles[props.type || "danger"];
 <template>
   <div
     role="alert"
-    :class="`border-s-4 bg-[#D9D9D9] p-4 rounded-xl shadow-sm ${currentStyle.border}`"
+    :class="`border-s-4 bg-[#D9D9D9] p-4 rounded-xl shadow-sm my-5 ${currentStyle.border}`"
   >
     <div class="flex items-center gap-2" :class="currentStyle.text">
       <svg
@@ -52,9 +52,7 @@ const currentStyle = typeStyles[props.type || "danger"];
         />
       </svg>
 
-      <strong class="font-medium">
-        {{ title || "Something went wrong" }}
-      </strong>
+      {{ title || "Something went wrong" }}
     </div>
 
     <p class="mt-2 text-md" :class="currentStyle.text">
