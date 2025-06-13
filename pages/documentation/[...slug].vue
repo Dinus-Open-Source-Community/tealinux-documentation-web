@@ -10,7 +10,7 @@ const { data: post, error } = await useAsyncData(`docs-${fullPath}`, () => {
 });
 
 const iconColorClass = computed(() =>
-  route.path === "/documentation/welcome-to-tealinuxos/introduction"
+  route.path === "/documentation/welcome-to-tealinuxos/what-is-tealinux"
     ? "text-primary"
     : "text-[#424242]"
 );
