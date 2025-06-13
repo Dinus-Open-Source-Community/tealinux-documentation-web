@@ -69,17 +69,19 @@ const editions = ref([
 
 <template>
   <div
-    class="bg-cover bg-white"
+    class="bg-cover py-14 bg-white"
     :style="{ backgroundImage: `url('${pattern}')` }"
   >
     <Header />
-    <h1
-      class="before:content-[w-10 border-l-[10px] py-2 pl-3 border-[#858585] ] pt-10"
-    >
-      Downloads
-    </h1>
+    <div class="mt-20 mx-auto w-1/2">
+      <h1
+        class=" md:text-4xl text-xl font-bold before:content-[w-10 border-l-[10px] py-2 pl-3 border-[#007163] ] text-[#007163]"
+      >
+        Downloads
+      </h1>
+    </div>
     <div
-      class="flex md:flex-row flex-col min-h-screen w-full justify-center items-center md:gap-20 gap-10 py-10"
+      class="flex md:flex-row flex-col w-full justify-center items-center md:gap-20 gap-10 py-10"
     >
       <UiDownloadCardTemplate
         v-for="edition in editions"
@@ -91,6 +93,7 @@ const editions = ref([
       />
     </div>
   </div>
+  <Footer/>
 </template>
 
 <style></style>

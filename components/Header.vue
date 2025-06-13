@@ -3,10 +3,10 @@ import { NuxtImg } from '#components'
 import { ref, onMounted, onUnmounted } from 'vue'
 import Drawer from 'primevue/drawer'
 const routes = ref([
-  { label: 'Home', url: '#home' },
-  { label: 'Docs', url: '#docs' },
-  { label: 'About', url: '#about' },
-  { label: 'Contribute', url: '#contribute' },
+  { label: 'Home', url: '/' },
+  { label: 'Docs', url: '/docs' },
+  { label: 'Download', url: '/download' },
+  { label: 'Contribute', url: 'https://github.com/tealinuxos' },
 ])
 
 const isScrolled = ref(false)

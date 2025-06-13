@@ -18,7 +18,7 @@ const getPageData = (slug) => {
       size: "1.9 GB",
       downloadLinks: {
         // New Data
-        direct: "#",
+        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/TeaLinuxOS-Celia-cosmic.iso",
       },
     },
     "plasma-edition": {
@@ -34,7 +34,7 @@ const getPageData = (slug) => {
       size: "2.9 GB",
       downloadLinks: {
         // New Data
-        direct: "#",
+        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/TeaLinuxOS-Celia-plasma.iso",
       },
     },
   };
@@ -50,6 +50,7 @@ useHead({
 </script>
 
 <template>
+  <Header/>
   <div
     class="min-h-screen bg-white bg-cover bg-center"
     :style="{ backgroundImage: `url('${pattern}')` }"
@@ -169,7 +170,7 @@ useHead({
               :href="pageData.downloadLinks.direct"
               class="bg-primary hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
-              Direct
+              Direct Download
             </a>
           </div>
         </div>
