@@ -68,7 +68,7 @@ onMounted(() => {
 
 <template>
   <!-- add horizontal padding for small screens -->
-  <section class="bg-green-1 flex flex-col items-center justify-center h-screen lg:px-[7%] px-[5%]">
+  <section class="bg-green-1 flex flex-col items-center justify-center h-screen lg:px-[7%] px-[5%] overflow-x-hidden">
     <!-- constrain overall width but allow full‐width below lg -->
     <div class="w-full my-auto">
       <!-- stack arrows & carousel vertically on mobile, horizontally on sm+ -->
@@ -88,7 +88,7 @@ onMounted(() => {
                 </p>
               </div>
               <!-- allow image to shrink on small screens -->
-              <NuxtImg
+              <img
                 :src="slide.img"
                 alt=""
                 class="w-[400px] md:w-[525px] lg:w-[650px] shadow-2xl rounded-[30px]"

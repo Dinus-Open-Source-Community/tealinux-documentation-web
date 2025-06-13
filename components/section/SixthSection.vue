@@ -66,13 +66,13 @@ onMounted(() => {
 <template>
   <div
     class="bg-[url(/public/image/Pattern.png)] bg-white text-black bg-cover bg-center min-h-screen flex flex-col md:p-8 lg:px-[7%] px-[3%] py-[20%] md:py-[6%] lg:py-[5%]">
-    <div class="flex flex-col flex-1 h-full w-full max-w-screen-xl relative lg:gap-y-16 md:gap-y-12 gap-y-6">
+    <div class="flex flex-col flex-1 h-full min-w-full max-w-screen-xl relative lg:gap-y-16 md:gap-y-12 gap-y-6">
       <div class="md:border-l-[16px] border-l-green-1 md:pl-4 text-center md:text-left">
         <h1 class="font-extralight text-green-1 text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px]">From the</h1>
         <h1 class="text-[40px] sm:text-[44px] md:text-[48px] lg:text-[56px] text-green-1 font-semibold">Press</h1>
       </div>
 
-      <div class="flex items-center justify-center w-full md:justify-center my-auto md:my-0">
+      <div class="flex items-center justify-center my-auto md:my-0">
         <LeftButton :on-click="() => goTo(currentSlide - 1)" theme="white" class="hidden md:block mb-[5%]" />
         <Splide :options="splideOptions" ref="splideRef" aria-label="TeaInstaller Carousel" class="md:w-[85%] w-full">
           <SplideSlide v-for="(slide, i) in slides" :key="i">

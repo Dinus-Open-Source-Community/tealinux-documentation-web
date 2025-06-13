@@ -1,14 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import { NuxtImg } from '#components'
 
-const description = ref('…loading…')
-
-onMounted(async () => {
-  const res = await fetch('/content/secondsection.json')
-  const json = await res.json()
-  description.value = json.secondSection
-})
 </script>
 
 <template>
@@ -25,7 +17,7 @@ onMounted(async () => {
              text-justify leading-relaxed mt-6 lg:mt-auto
              w-full lg:w-fit      
       ">
-        {{ description }}
+        TeaLinuxOS adalah distro Linux turunan Ubuntu yang dikembangkan oleh Dinus Open Source Community (DOSCOM) dan kawan-kawan, berorientasi pemrograman. Mengusung filosofi “Nikmatnya sebuah racikan”, TeaLinuxOS dikembangkan terbuka dan kolaboratif untuk menghadirkan distro pemrograman bagi dunia pendidikan
       </p>
     </div>
 

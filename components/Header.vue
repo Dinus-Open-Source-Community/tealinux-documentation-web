@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Drawer from 'primevue/drawer'
 const routes = ref([
   { label: 'Home', url: '/' },
-  { label: 'Docs', url: '/docs' },
+  { label: 'Docs', url: '/documentation/welcome-to-tealinuxos/what-is-tealinux' },
   { label: 'Download', url: '/download' },
   { label: 'Contribute', url: 'https://github.com/tealinuxos' },
 ])
@@ -36,7 +36,9 @@ const route = useRoute()
       ? 'bg-white backdrop-blur-md shadow-lg rounded-b-2xl py-4'
       : 'bg-transparent py-3'
   ]">
+  <NuxtLink to="/">
     <NuxtImg src="/image/logo_head.svg" alt="" class="md:w-[40px] w-[30px]" />
+    </NuxtLink>
     <div class="md:flex ml-auto gap-x-5 hidden">
       <div v-for="(route, index) in routes" :key="index">
         <NuxtLink :href="route.url" :class="[

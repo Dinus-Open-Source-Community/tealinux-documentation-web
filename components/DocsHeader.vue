@@ -215,7 +215,9 @@ const NavigationItem = (props: NavigationItemProps) => {
     <div class="flex items-center justify-between w-full">
       <h1 class="text-[25px] text-white font-extrabold tracking-wide flex items-center">
         <div>
+          <NuxtLink to="/">
           <span class="md:text-[40px] text-xl tracking-wide">TeaLinux</span><span class="text-[17px] md:text-[30px]"> Docs</span>
+          </NuxtLink>
         </div>
       </h1>
 

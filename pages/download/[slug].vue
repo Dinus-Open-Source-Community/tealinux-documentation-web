@@ -120,19 +120,19 @@ useHead({
               </div>
               <div class="space-y-4 text-gray-800">
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Name</span>
+                  <span class="text-primary font-semibold w-35">Name</span>
                   <span class="text-gray-600">: {{ pageData.name }}</span>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Codename</span>
+                  <span class="text-primary font-semibold w-35">Codename</span>
                   <span class="text-gray-600">: {{ pageData.codename }}</span>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Based On</span>
+                  <span class="text-primary font-semibold w-35">Based On</span>
                   <span class="text-gray-600">: {{ pageData.basedOn }}</span>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40"
+                  <span class="text-primary font-semibold w-35"
                     >Kernel Version</span
                   >
                   <span class="text-gray-600"
@@ -140,7 +140,7 @@ useHead({
                   >
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40"
+                  <span class="text-primary font-semibold w-35"
                     >Release Date</span
                   >
                   <span class="text-gray-600"
@@ -148,15 +148,16 @@ useHead({
                   >
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40"
-                    >Desktop Environment</span
+                  <span class="text-primary font-semibold w-35"
+                    >Desktop
+                     Environment</span
                   >
                   <span class="text-gray-600"
                     >: {{ pageData.desktopEnvironment }}</span
                   >
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Size</span>
+                  <span class="text-primary font-semibold w-35">Size</span>
                   <span class="text-gray-600">: {{ pageData.size }}</span>
                 </div>
               </div>
