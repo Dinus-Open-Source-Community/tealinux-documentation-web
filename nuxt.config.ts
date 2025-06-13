@@ -2,6 +2,17 @@
 import tailwindcss from "@tailwindcss/vite";
 import lara from "@primeuix/themes/lara";
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: "Tealinux",
+      htmlAttrs: {
+        lang: "en",
+      },
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/image/logo_head.svg" },
+      ],
+    },
+  },
   compatibilityDate: "2024-11-01",
   modules: [
     "@nuxt/content",
