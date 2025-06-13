@@ -11,14 +11,14 @@ const getPageData = (slug) => {
         "TeaLinux COSMIC Edition - Modern and sleek Linux desktop distribution",
       name: "TeaLinux COSMIC",
       codename: "Cosmic Tea",
-      basedOn: "Ubuntu 24.04 LTS", // New Data
+      basedOn: "Ubuntu 24.04 LTS",
       kernelVersion: "6.8.0-47-generic",
       releaseDate: "2024-11-15",
       desktopEnvironment: "COSMIC Desktop",
       size: "1.9 GB",
       downloadLinks: {
-        // New Data
-        direct: "#",
+        direct:
+          "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/TeaLinuxOS-Celia-cosmic.iso",
       },
     },
     "plasma-edition": {
@@ -34,7 +34,8 @@ const getPageData = (slug) => {
       size: "2.9 GB",
       downloadLinks: {
         // New Data
-        direct: "#",
+        direct:
+          "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/TeaLinuxOS-Celia-plasma.iso",
       },
     },
   };
@@ -50,6 +51,7 @@ useHead({
 </script>
 
 <template>
+  <Header />
   <div
     class="min-h-screen bg-white bg-cover bg-center"
     :style="{ backgroundImage: `url('${pattern}')` }"
@@ -119,19 +121,19 @@ useHead({
               </div>
               <div class="space-y-4 text-gray-800">
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Name</span>
+                  <span class="text-primary font-semibold w-35">Name</span>
                   <span class="text-gray-600">: {{ pageData.name }}</span>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Codename</span>
+                  <span class="text-primary font-semibold w-35">Codename</span>
                   <span class="text-gray-600">: {{ pageData.codename }}</span>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Based On</span>
+                  <span class="text-primary font-semibold w-35">Based On</span>
                   <span class="text-gray-600">: {{ pageData.basedOn }}</span>
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40"
+                  <span class="text-primary font-semibold w-35"
                     >Kernel Version</span
                   >
                   <span class="text-gray-600"
@@ -139,7 +141,7 @@ useHead({
                   >
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40"
+                  <span class="text-primary font-semibold w-35"
                     >Release Date</span
                   >
                   <span class="text-gray-600"
@@ -147,7 +149,7 @@ useHead({
                   >
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40"
+                  <span class="text-primary font-semibold w-35"
                     >Desktop Environment</span
                   >
                   <span class="text-gray-600"
@@ -155,7 +157,7 @@ useHead({
                   >
                 </div>
                 <div class="flex items-center">
-                  <span class="text-primary font-semibold w-40">Size</span>
+                  <span class="text-primary font-semibold w-35">Size</span>
                   <span class="text-gray-600">: {{ pageData.size }}</span>
                 </div>
               </div>
@@ -169,7 +171,7 @@ useHead({
               :href="pageData.downloadLinks.direct"
               class="bg-primary hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
-              Direct
+              Direct Download
             </a>
           </div>
         </div>
