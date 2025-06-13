@@ -6,10 +6,7 @@
       "dependencies": {
         "@nuxt/content": "^3.4.0",
         "@nuxt/fonts": "^0.11.0",
-<<<<<<< HEAD
         "@nuxt/image": "^1.10.0",
-=======
->>>>>>> 1ef117b (fix)
         "@nuxtjs/mdc": "^0.17.0",
         "@tailwindcss/typography": "^0.5.16",
         "@tailwindcss/vite": "^4.1.0",
