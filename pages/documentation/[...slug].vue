@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed, watchEffect } from 'vue'; // Make sure onMounted is imported
+import { ref, onMounted, onBeforeUnmount, computed, watchEffect } from "vue"; // Make sure onMounted is imported
 const route = useRoute();
 const slug = route.params.slug;
 
@@ -16,21 +16,18 @@ const iconColorClass = computed(() =>
 );
 
 const breadcrumb = computed(() => {
-  if (!post.value?.path) return '';
-  
-  const pathParts = post.value.path.replace(/^\//, '').split('/');
-  
-  if (pathParts[0] === 'documentation') {
+  if (!post.value?.path) return "";
+
+  const pathParts = post.value.path.replace(/^\//, "").split("/");
+
+  if (pathParts[0] === "documentation") {
     pathParts.shift();
   }
-  
-  const breadcrumbParts = pathParts.map(part => 
-    part.replace(/-/g, ' ')
-  );
-  
-  return breadcrumbParts.join(' > ');
-});
 
+  const breadcrumbParts = pathParts.map((part) => part.replace(/-/g, " "));
+
+  return breadcrumbParts.join(" > ");
+});
 
 const activeId = ref(null);
 const observer = ref(null);
@@ -40,27 +37,29 @@ onMounted(() => {
     if (observer.value) {
       observer.value.disconnect();
     }
-  
+
     if (!post.value) {
       return;
     }
-  
+
     const observerOptions = {
-      root: null, 
+      root: null,
       rootMargin: "-40% 0px -55% 0px",
-      threshold: 0 
+      threshold: 0,
     };
-  
+
     observer.value = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           activeId.value = entry.target.id;
         }
       });
     }, observerOptions);
-  
-    const elements = document.querySelectorAll('.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6');
-    elements.forEach(el => observer.value.observe(el));
+
+    const elements = document.querySelectorAll(
+      ".prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6"
+    );
+    elements.forEach((el) => observer.value.observe(el));
   });
 });
 
@@ -120,12 +119,13 @@ onBeforeUnmount(() => {
               :key="index"
               class="my-2"
               :style="{ paddingLeft: `${item.depth * 12}px` }"
-              
-              :class="{ 'text-primary': activeId === item.id }" 
             >
               <a
                 :href="'#' + item.id"
-                class="hover:text-primary transition-colors duration-200"
+                :class="[
+                  'hover:text-primary transition-colors duration-200',
+                  activeId === item.id ? 'text-primary' : 'text-[#424242]',
+                ]"
               >
                 {{ item.text }}
               </a>
@@ -143,7 +143,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .sticky-toc {
   position: sticky;
-  top: 100px; 
+  top: 100px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   overscroll-behavior: contain;
