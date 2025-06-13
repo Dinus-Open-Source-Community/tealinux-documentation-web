@@ -3,7 +3,6 @@ const route = useRoute();
 const slug = route.params.slug;
 import pattern from '/img/patten-download.png';
 
-// This function acts as a mini-database for your page data.
 const getPageData = (slug) => {
   const pageData = {
     'cosmic-edition': {
@@ -15,11 +14,10 @@ const getPageData = (slug) => {
       kernelVersion: '6.8.0-47-generic',
       releaseDate: '2024-11-15',
       desktopEnvironment: 'COSMIC Desktop',
-      size: '2.8 GB',
+      size: '1.9 GB',
       downloadLinks: { // New Data
         direct: '#',
-        googleDrive: '#',
-        mirror: '#'
+
       }
     },
     'plasma-edition': {
@@ -31,15 +29,12 @@ const getPageData = (slug) => {
       kernelVersion: '6.8.0-47-generic',
       releaseDate: '2024-11-15',
       desktopEnvironment: 'KDE Plasma 6',
-      size: '3.2 GB',
+      size: '2.9 GB',
       downloadLinks: { // New Data
         direct: '#',
-        googleDrive: '#',
-        mirror: '#'
       }
     }
   };
-  // Fallback to cosmic-edition if slug is not found
   return pageData[slug] || pageData['cosmic-edition'];
 };
 
@@ -135,12 +130,6 @@ useHead({
           <div class="flex flex-wrap justify-center gap-4 mt-12 pt-8 border-t border-gray-200">
             <a :href="pageData.downloadLinks.direct" class="bg-primary hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl">
               Direct
-            </a>
-            <a :href="pageData.downloadLinks.googleDrive" class="bg-primary hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl">
-              Google Drive
-            </a>
-            <a :href="pageData.downloadLinks.mirror" class="bg-primary hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl">
-              Mirror Link
             </a>
           </div>
         </div>
