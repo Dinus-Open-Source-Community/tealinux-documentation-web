@@ -1,0 +1,24 @@
+{
+  "thirdSection": [
+    {
+      "title": "High Quality",
+      "description": "Berangkat dari dukungan dari semua pihak sistem operasi ini mengalami penyempurnaan mejadi sistem operasi yang stabil dan berkualitas.",
+      "img": "/image/high-quality.svg"
+    },
+    {
+      "title": "Nutrition",
+      "description": "Dukungan yang kuat dan tersedianya repository yang lengkap menjadikan sistem operasi ini penuh nutrisi.",
+      "img": "/image/nutrition.svg"
+    },
+    {
+      "title": "Antea-piracy",
+      "description": "The opensource has come true, this is the time to revenge.",
+      "img": "/image/high-quality.svg"
+    },
+    {
+      "title": "Community",
+      "description": "Dukungan kuat dari forum dan komunitas dunia virtual maupun komunitas riil menjadikan sistem operasi ini berkembang cepat.",
+      "img": "/image/community.svg"
+    }
+  ]
+}

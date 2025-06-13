@@ -1,0 +1,19 @@
+{
+  "fifthSection": [
+    {
+      "title": "Tea-Installer",
+      "text": "With our own Installer, installing Arch-based distro never been so easy and intuitive.",
+      "img": "/image/installer.png"
+    },
+    {
+      "title": "Tea-Installer (Alt)",
+      "text": "Alternate slide content here.",
+      "img": "/image/installer.png"
+    },
+    {
+      "title": "Tea-Installer (3)",
+      "text": "More information on third slide.",
+      "img": "/image/installer.png"
+    }
+  ]
+}
