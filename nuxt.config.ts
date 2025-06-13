@@ -30,8 +30,7 @@ export default defineNuxtConfig({
   nitro: {
     watchOptions: {
       usePolling: true,
-    },
-    preset: "bun",
+    }
   },
 
   fonts: {
