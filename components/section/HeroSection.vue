@@ -38,7 +38,7 @@
             </button>
           </NuxtLink>
 
-          <NuxtLink to="#">
+          <NuxtLink to="/documentation/welcome-to-tealinuxos/what-is-tealinux">
             <button class="btn-secondary lg:w-[230px] w-[190px] cursor-pointer">
               How to install?
             </button>
