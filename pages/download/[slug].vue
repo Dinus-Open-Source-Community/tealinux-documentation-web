@@ -11,7 +11,7 @@ const getPageData = (slug) => {
         "TeaLinux COSMIC Edition - Modern and sleek Linux desktop distribution",
       name: "TeaLinux COSMIC",
       codename: "Cosmic Tea",
-      basedOn: "Ubuntu 24.04 LTS", // New Data
+      basedOn: "Ubuntu 24.04 LTS",
       kernelVersion: "6.8.0-47-generic",
       releaseDate: "2024-11-15",
       desktopEnvironment: "COSMIC Desktop",
