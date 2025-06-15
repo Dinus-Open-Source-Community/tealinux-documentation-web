@@ -9,32 +9,34 @@ const getPageData = (slug) => {
       title: "TeaLinux COSMIC Edition",
       description:
         "TeaLinux COSMIC Edition - Modern and sleek Linux desktop distribution",
+      thumbnail: "/img/cosmic.png",
       name: "TeaLinux COSMIC",
-      codename: "Cosmic Tea",
-      basedOn: "Ubuntu 24.04 LTS",
-      kernelVersion: "6.8.0-47-generic",
-      releaseDate: "2024-11-15",
+      codename: "Celia",
+      basedOn: "Arch Linux",
+      kernelVersion: "6.15.2",
+      releaseDate: "2025-06-14",
       desktopEnvironment: "COSMIC Desktop",
-      size: "1.9 GB",
+      size: "1.9 GiB",
       downloadLinks: {
         // New Data
-        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/TeaLinuxOS-Celia-cosmic.iso",
+        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/tealinux-celia-cosmic-2025.06.16-x86_64.iso",
       },
     },
     "plasma-edition": {
       title: "TeaLinux Plasma Edition",
       description:
         "TeaLinux Plasma Edition - Powerful KDE Plasma desktop experience",
+      thumbnail: "/img/plasma.png",
       name: "TeaLinux Plasma",
-      codename: "Plasma Tea",
-      basedOn: "Ubuntu 24.04 LTS", // New Data
-      kernelVersion: "6.8.0-47-generic",
-      releaseDate: "2024-11-15",
+      codename: "Celia",
+      basedOn: "Arch Linux", // New Data
+      kernelVersion: "6.15.2",
+      releaseDate: "2025-06-14",
       desktopEnvironment: "KDE Plasma 6",
-      size: "2.9 GB",
+      size: "2.9 GiB",
       downloadLinks: {
         // New Data
-        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/TeaLinuxOS-Celia-plasma.iso",
+        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/tealinux-celia-plasma-2025.06.16-x86_64.iso",
       },
     },
   };
@@ -81,16 +83,7 @@ useHead({
               slug === "cosmic-edition" ? "COSMIC Edition" : "PLASMA Edition"
             }}
           </h1>
-
-          <p
-            class="text-gray-700 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed"
-          >
-            Year after year, I keep trying one Linux desktop distro after
-            another. But for more than a decade now, I always return to Linux
-            Mint. Why? Because, year in and year out, Mint remains the best and
-            easiest-to-use Linux desktop.
-          </p>
-        </header>
+      </header>
 
         <div
           class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-6xl mx-auto border border-primary"
@@ -100,7 +93,7 @@ useHead({
               <div class="bg-gray-900 rounded-2xl p-4 shadow-xl">
                 <div class="bg-gray-800 rounded-lg overflow-hidden">
                   <img
-                    :src="`/img/download-bg1.png`"
+                    :src="pageData.thumbnail"
                     alt="TeaLinux Screenshot"
                     class="w-full h-auto rounded-lg"
                   />

@@ -15,7 +15,7 @@ useHead({
 // Import components
 const editions = ref([
   {
-    image: "/img/download-bg1.png",
+    image: "/img/cosmic.png",
     title: "COSMIC EDITION",
     slug: "cosmic-edition",
     timeline: [
@@ -40,7 +40,7 @@ const editions = ref([
     ],
   },
   {
-    image: "/img/download-bg1.png",
+    image: "/img/plasma.png",
     title: "PLASMA EDITION",
     slug: "plasma-edition",
     timeline: [
