@@ -31,7 +31,7 @@
           class="flex flex-col sm:flex-row sm:items-center sm:justify-center lg:justify-start gap-4"
         >
           <NuxtLink
-            to="https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/TeaLinuxOS-Celia-plasma.iso"
+            to="/download"
           >
             <button class="btn-primary lg:w-[230px] w-[190px] cursor-pointer">
               Download
