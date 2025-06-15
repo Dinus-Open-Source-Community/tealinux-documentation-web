@@ -17,7 +17,7 @@ import { NuxtImg } from '#components'
              text-justify leading-relaxed mt-6 lg:mt-auto
              w-full lg:w-fit      
       ">
-        TeaLinuxOS adalah distro Linux turunan Ubuntu yang dikembangkan oleh Dinus Open Source Community (DOSCOM) dan kawan-kawan, berorientasi pemrograman. Mengusung filosofi “Nikmatnya sebuah racikan”, TeaLinuxOS dikembangkan terbuka dan kolaboratif untuk menghadirkan distro pemrograman bagi dunia pendidikan
+        TeaLinuxOS adalah distro Linux turunan Ubuntu yang beralih ke Arch Linux, dikembangkan oleh Dinus Open Source Community (DOSCOM) dan kawan-kawan. Mengusung filosofi “Nikmatnya sebuah racikan.” TeaLinuxOS dikembangkan secara terbuka dan kolaboratif untuk menghadirkan distro sebagai kanvas fleksibel yang dapat digunakan di berbagai bidang.
       </p>
     </div>
 
