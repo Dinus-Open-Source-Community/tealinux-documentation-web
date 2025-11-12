@@ -36,31 +36,53 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div :class="['bg-green-1 flex h-fit items-center py-[1%] px-[7%]', customClass]">
-    <div class="md:h-[367px] flex md:flex-row flex-col gap-[7%] md:items-center flex-1">
-      <NuxtImg src="/image/logo_footer.svg" class="lg:w-[225px] hidden xl:block" />
-
-      <div class="flex flex-col gap-y-4 max-w-[376px]">
-        <div class="flex gap-x-2 items-center">
-          <NuxtImg src="/image/logo_footer.svg" class="w-[30px] block md:hidden" />
-          <h1 class="font-semibold text-white xl:text-[56px] lg:text-[48px] md:text-[44px] sm:text-[32px]">TeaLinux OS</h1>
-        </div>
-        <p class="text-justify text-white font-light lg:text-base text-xs">
-          TeaLinuxOS adalah distro Linux turunan Ubuntu yang dikembangkan oleh Dinus Open Source Community (DOSCOM)
-          dan kawan-kawan yang berorientasi pemrograman. Dengan menghadirkan filosofi, “Nikmatnya sebuah racikan”,
-          TeaLinuxOS dikembangkan secara terbuka dan bersama-sama untuk menghasilkan distro Linux pemrograman untuk
-          dunia pendidikan.
-        </p>
+  <footer
+    :class="[
+      'bg-green-1 text-white py-10 px-[7%] flex flex-col md:flex-row md:items-start md:justify-between gap-10',
+      customClass
+    ]"
+  >
+    <!-- Left: Logo -->
+    <div class="flex flex-col items-start">
+      <NuxtImg
+        src="/image/logo_footer.svg"
+        class="w-[180px] md:w-[225px] mb-4 hidden md:block"
+        alt="TeaLinuxOS Logo"
+      />
+      <div class="flex items-center gap-2 md:hidden mb-3">
+        <NuxtImg src="/image/logo_footer.svg" class="w-8 h-8" />
+        <h1 class="font-semibold text-xl">TeaLinux OS</h1>
       </div>
+      <h1 class="font-semibold text-3xl md:text-5xl hidden md:block mb-3">TeaLinux OS</h1>
+    </div>
 
-      <div class="grid grid-cols-2 md:gap-[55px] gap-[25px] flex-shrink-0 mt-[5%] md:mt-0">
-        <div v-for="(contact, index) in footerData.contact" :key="index" class="md:col-span-1 col-span-2 flex gap-x-3.5 items-center text-white">
-          <NuxtImg :src="contact.image" class="lg:w-[60px] lg:h-[60px] md:w-[42px] md:h-[42px] w-[30px] h-[30px]" />
-          <h3 class="font-semibold lg:text-xl md:text-lg text-base whitespace-nowrap">{{ contact.name }}</h3>
+    <!-- Middle: Deskripsi -->
+    <div class="max-w-[420px] flex-1">
+      <p class="text-sm md:text-base leading-relaxed text-justify">
+        TeaLinuxOS adalah distro Linux turunan Ubuntu yang dikembangkan oleh Dinus Open Source Community (DOSCOM)
+        dan kawan-kawan yang berorientasi pemrograman. Dengan menghadirkan filosofi
+        <span class="italic">“Nikmatnya sebuah racikan”</span>, TeaLinuxOS dikembangkan secara terbuka dan bersama-sama
+        untuk menghasilkan distro Linux pemrograman untuk dunia pendidikan.
+      </p>
+    </div>
+
+    <!-- Right: Kontak -->
+    <div class="flex flex-col gap-4">
+      <h2 class="font-semibold text-xl mb-2 border-b border-white/30 pb-1">Kontak Kami</h2>
+      <div class="grid grid-cols-2 gap-5">
+        <div
+          v-for="(contact, index) in footerData.contact"
+          :key="index"
+          class="flex items-center gap-3 hover:opacity-90 transition"
+        >
+          <NuxtImg
+            :src="contact.image"
+            class="w-8 h-8 md:w-10 md:h-10"
+            :alt="contact.name"
+          />
+          <h3 class="font-medium text-sm md:text-base whitespace-nowrap">{{ contact.name }}</h3>
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
-
-

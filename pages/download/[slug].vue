@@ -1,8 +1,13 @@
 <script setup>
+import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
 const route = useRoute();
 const slug = route.params.slug;
 import pattern from "/img/patten-download.png";
 
+/**
+ * Fungsi untuk mengembalikan metadata dasar tiap edisi
+ */
 const getPageData = (slug) => {
   const pageData = {
     "cosmic-edition": {
@@ -17,10 +22,6 @@ const getPageData = (slug) => {
       releaseDate: "2025-06-14",
       desktopEnvironment: "COSMIC Desktop",
       size: "1.9 GiB",
-      downloadLinks: {
-        // New Data
-        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/tealinux-celia-cosmic-2025.06.16-x86_64.iso",
-      },
     },
     "plasma-edition": {
       title: "TeaLinux Plasma Edition",
@@ -29,30 +30,71 @@ const getPageData = (slug) => {
       thumbnail: "/img/plasma.png",
       name: "TeaLinux Plasma",
       codename: "Celia",
-      basedOn: "Arch Linux", // New Data
+      basedOn: "Arch Linux",
       kernelVersion: "6.15.2",
       releaseDate: "2025-06-14",
       desktopEnvironment: "KDE Plasma 6",
       size: "2.9 GiB",
-      downloadLinks: {
-        // New Data
-        direct: "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/tealinux-celia-plasma-2025.06.16-x86_64.iso",
-      },
     },
   };
   return pageData[slug] || pageData["cosmic-edition"];
 };
 
-const pageData = getPageData(slug);
+const pageData = ref(getPageData(slug));
+const latestLink = ref(""); // akan diisi link ISO terbaru
 
+/**
+ * Fungsi untuk mengambil file ISO terbaru dari server
+ */
+const fetchLatestISO = async (edition) => {
+  const baseUrl =
+    "https://pinguin.dinus.ac.id/iso/tealinuxos/TeaLinuxOS-Arch/2025/release/";
+
+  try {
+    const response = await fetch(baseUrl);
+    const html = await response.text();
+
+    // Regex mencari file ISO berdasarkan edisi
+    const regex = new RegExp(
+      `tealinux-celia-${edition}-([\\d\\.]+)-x86_64\\.iso`,
+      "g"
+    );
+
+    const matches = [...html.matchAll(regex)];
+    if (matches.length > 0) {
+      // Ambil file terakhir (paling baru)
+      const latest = matches[matches.length - 1][0];
+      latestLink.value = baseUrl + latest;
+      console.log(`✅ Latest ${edition} ISO:`, latestLink.value);
+    } else {
+      console.warn(`⚠️ Tidak ditemukan file ISO untuk ${edition}`);
+      latestLink.value = null;
+    }
+  } catch (err) {
+    console.error("❌ Gagal fetch versi terbaru:", err);
+    latestLink.value = null;
+  }
+};
+
+/**
+ * Jalankan saat halaman dimuat
+ */
+onMounted(async () => {
+  const edition = slug.includes("plasma") ? "plasma" : "cosmic";
+  await fetchLatestISO(edition);
+});
+
+/**
+ * Metadata SEO
+ */
 useHead({
-  title: pageData.title,
-  meta: [{ name: "description", content: pageData.description }],
+  title: pageData.value.title,
+  meta: [{ name: "description", content: pageData.value.description }],
 });
 </script>
 
 <template>
-  <Header/>
+  <Header />
   <div
     class="min-h-screen bg-white bg-cover bg-center"
     :style="{ backgroundImage: `url('${pattern}')` }"
@@ -83,7 +125,7 @@ useHead({
               slug === "cosmic-edition" ? "COSMIC Edition" : "PLASMA Edition"
             }}
           </h1>
-      </header>
+        </header>
 
         <div
           class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-6xl mx-auto border border-primary"
@@ -142,8 +184,7 @@ useHead({
                 </div>
                 <div class="flex items-center">
                   <span class="text-primary font-semibold w-35"
-                    >Desktop
-                     Environment</span
+                    >Desktop Environment</span
                   >
                   <span class="text-gray-600"
                     >: {{ pageData.desktopEnvironment }}</span
@@ -161,11 +202,19 @@ useHead({
             class="flex flex-wrap justify-center gap-4 mt-12 pt-8 border-t border-gray-200"
           >
             <a
-              :href="pageData.downloadLinks.direct"
+              v-if="latestLink"
+              :href="latestLink"
               class="bg-primary hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Direct Download
             </a>
+
+            <span
+              v-else
+              class="text-gray-500 italic text-sm mt-4"
+            >
+              Sedang mencari link ISO terbaru...
+            </span>
           </div>
         </div>
       </div>
