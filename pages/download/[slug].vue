@@ -77,6 +77,27 @@ const fetchLatestISO = async (edition) => {
 };
 
 /**
+ * Fungsi tracking untuk Umami
+ */
+const trackDownload = () => {
+  try {
+    if (window.umami) {
+      const edition = slug.includes("plasma") ? "Plasma" : "Cosmic";
+      umami.trackEvent("Download ISO", {
+        category: "TeaLinuxOS",
+        edition,
+        version: pageData.value.kernelVersion,
+      });
+      console.log(`📊 Tracked: ${edition} ${pageData.value.kernelVersion}`);
+    } else {
+      console.warn("⚠️ Umami belum terdeteksi di window.");
+    }
+  } catch (error) {
+    console.error("❌ Gagal kirim event ke Umami:", error);
+  }
+};
+
+/**
  * Jalankan saat halaman dimuat
  */
 onMounted(async () => {
@@ -204,15 +225,14 @@ useHead({
             <a
               v-if="latestLink"
               :href="latestLink"
+              target="_blank"
+              @click="trackDownload"
               class="bg-primary hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Direct Download
             </a>
 
-            <span
-              v-else
-              class="text-gray-500 italic text-sm mt-4"
-            >
+            <span v-else class="text-gray-500 italic text-sm mt-4">
               Sedang mencari link ISO terbaru...
             </span>
           </div>
