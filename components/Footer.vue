@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import { NuxtImg } from '#components'
 
 interface Contact {
@@ -12,6 +11,10 @@ interface FooterData {
   contact: Contact[]
 }
 
+interface FooterSectionResponse {
+  sixthsection: FooterData
+}
+
 defineProps({
   customClass: {
     type: String,
@@ -19,20 +22,21 @@ defineProps({
   }
 })
 
-const footerData = ref<FooterData>({
+// Use Nuxt's useFetch for proper SSR/SSG support
+const { data, error } = await useFetch<FooterSectionResponse>('/content/footersection.json', {
+  key: 'footer-section-data'
+})
+
+// Extract footer data with fallback
+const footerData = computed(() => data.value?.sixthsection || {
   content: '',
   contact: []
 })
 
-onMounted(async () => {
-  try {
-    const res = await fetch('/content/footersection.json')
-    const json = await res.json()
-    footerData.value = json.sixthsection
-  } catch (error) {
-    console.error('Error loading footer data:', error)
-  }
-})
+// Log error if fetch fails
+if (error.value) {
+  console.error('Error loading footer data:', error.value)
+}
 </script>
 
 <template>

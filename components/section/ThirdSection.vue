@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { NuxtImg } from '#components'
-import { ref, onMounted } from 'vue'
 
 interface Feature {
   title: string
@@ -8,13 +7,21 @@ interface Feature {
   img: string
 }
 
-const features = ref<Feature[]>([])
+interface ThirdSectionData {
+  thirdSection: Feature[]
+}
 
-onMounted(async () => {
-  const res = await fetch('/content/thirdsection.json')
-  const json = await res.json()
-  features.value = json.thirdSection
+// Use Nuxt's useFetch for proper SSR/SSG support
+const { data, error } = await useFetch<ThirdSectionData>('/content/thirdsection.json', {
+  key: 'third-section-data'
 })
+
+// Extract features with fallback
+const features = computed(() => data.value?.thirdSection || [])
+
+if (error.value) {
+  console.error('Error loading third section data:', error.value)
+}
 </script>
 
 <template>

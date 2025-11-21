@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import '@splidejs/vue-splide/css';
 // @ts-ignore: vue-splide has no type declarations
-import { ref, watch } from 'vue'
-import '@splidejs/vue-splide/css';
+import { ref } from 'vue'
 // @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import RightButton from '../button/RightButton.vue';
 import LeftButton from '../button/LeftButton.vue';
+
 interface Slide {
   title: string
   text: string
   img: string
 }
 
-const slides = ref<Slide[]>([])
+interface FifthSectionData {
+  fifthSection: Slide[]
+}
 
 const splideRef = ref();
 const currentSlide = ref(0);
@@ -32,6 +34,18 @@ const splideOptions = {
   }
 }
 
+// Use Nuxt's useFetch for proper SSR/SSG support
+const { data, error } = await useFetch<FifthSectionData>('/content/fifthsection.json', {
+  key: 'fifth-section-data'
+})
+
+// Extract slides with fallback
+const slides = computed(() => data.value?.fifthSection || [])
+
+if (error.value) {
+  console.error('Error loading fifth section data:', error.value)
+}
+
 const goTo = (index: number) => {
   if (slides.value.length === 0) return
   
@@ -47,17 +61,9 @@ const goTo = (index: number) => {
   splideRef.value?.go(targetIndex)
   currentSlide.value = targetIndex
 }
-async function getData() {
-  const res = await fetch('/content/fifthsection.json')
-  const json = await res.json()
-  slides.value = json.fifthSection
-  
-}
 
 onMounted(() => {
-    getData();
-
-    const splideInstance = splideRef.value?.splide
+  const splideInstance = splideRef.value?.splide
   if (splideInstance) {
     splideInstance.on('move', (newIndex: number) => {
       currentSlide.value = newIndex

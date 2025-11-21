@@ -6,11 +6,16 @@ import '@splidejs/vue-splide/css';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import RightButton from '../button/RightButton.vue';
 import LeftButton from '../button/LeftButton.vue';
+
 interface Slide {
   author: string
   description: string
 }
-const slides = ref<Slide[]>([])
+
+interface SixthSectionData {
+  sixthSection: Slide[]
+}
+
 const splideOptions = {
   rewind: true,
   perPage: 1,
@@ -28,6 +33,14 @@ const splideOptions = {
 const splideRef = ref();
 const currentSlide = ref(0);
 
+// Use Nuxt's useFetch for proper SSR/SSG support
+const { data, error } = await useFetch<SixthSectionData>('/content/sixthsection.json', {
+  key: 'sixth-section-data'
+})
+
+// Extract slides from the fetched data
+const slides = computed(() => data.value?.sixthSection || [])
+
 const goTo = (index: number) => {
   if (slides.value.length === 0) return
 
@@ -44,15 +57,7 @@ const goTo = (index: number) => {
   currentSlide.value = targetIndex
 }
 
-async function getData() {
-  const res = await fetch('/content/sixthsection.json')
-  const json = await res.json()
-  slides.value = json.sixthSection
-}
-
 onMounted(() => {
-  getData();
-
   // Akses instance Splide dari komponen Vue wrapper
   const splideInstance = splideRef.value?.splide
   if (splideInstance) {
@@ -62,6 +67,7 @@ onMounted(() => {
   }
 });
 </script>
+
 
 <template>
   <div
