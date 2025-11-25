@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite";
 import lara from "@primeuix/themes/lara";
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -13,7 +14,9 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   compatibilityDate: "2024-11-01",
+
   modules: [
     "@nuxt/content",
     "@nuxt/fonts",
@@ -21,16 +24,27 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@nuxtjs/mdc",
   ],
+
+  content: {
+    documentDriven: false,
+  },
+
+  // Nitro configuration
+  nitro: {
+    watchOptions: {
+      usePolling: true,
+    },
+    preset: 'node-server',
+    // Properly handle native modules
+    moduleSideEffects: ['better-sqlite3'],
+  },
+
   devtools: { enabled: true },
+
   watchers: {
     chokidar: {
       usePolling: true,
     },
-  },
-  nitro: {
-    watchOptions: {
-      usePolling: true,
-    }
   },
 
   fonts: {
@@ -41,7 +55,9 @@ export default defineNuxtConfig({
       },
     ],
   },
+
   css: ["~/assets/css/main.css"],
+
   vite: {
     plugins: [tailwindcss()],
     server: {
@@ -53,6 +69,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   mdc: {
     highlight: false,
     components: {
@@ -62,6 +79,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   primevue: {
     options: {
       theme: {
