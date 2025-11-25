@@ -21,6 +21,7 @@ interface NavigationItemProps {
 
 // Search functionality
 const query = ref('');
+const data = ref<SearchItem[]>([]); // Holds search items
 const isModalOpen = ref(false);
 const searchInput = ref<HTMLInputElement | null>(null);
 const route = useRoute();
@@ -42,7 +43,7 @@ const loadSearchIndex = () => {
     searchOptions: { prefix: true, fuzzy: 0.2 },
   });
   // Add fresh data
-  if (data.value) {
+  if (data.value && data.value.length > 0) {
     miniSearch.addAll(toValue(data.value));
   }
 };
