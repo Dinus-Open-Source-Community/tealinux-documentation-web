@@ -24,7 +24,7 @@ const query = ref('');
 const isModalOpen = ref(false);
 const searchInput = ref<HTMLInputElement | null>(null);
 const route = useRoute();
-const miniSearch = new MiniSearch<SearchItem>({
+let miniSearch = new MiniSearch<SearchItem>({
   fields: ['title'],
   storeFields: ['title', 'content'],
   searchOptions: {
@@ -33,11 +33,27 @@ const miniSearch = new MiniSearch<SearchItem>({
   },
 });
 
-const { data } = await useAsyncData('search', () => $fetch<SearchItem[]>('/api/search'));
+// Function to load and reset search index to avoid duplicate IDs
+const loadSearchIndex = () => {
+  // Re‑create a fresh MiniSearch instance each time
+  miniSearch = new MiniSearch<SearchItem>({
+    fields: ['title'],
+    storeFields: ['title', 'content'],
+    searchOptions: { prefix: true, fuzzy: 0.2 },
+  });
+  // Add fresh data
+  if (data.value) {
+    miniSearch.addAll(toValue(data.value));
+  }
+};
 
-if (data.value) {
-  miniSearch.addAll(toValue(data.value));
-}
+// Initial load
+loadSearchIndex();
+
+// Re‑load index when route changes to prevent duplicate entries
+watch(() => route.fullPath, () => {
+  loadSearchIndex();
+});
 
 // Navigation functionality
 const {
